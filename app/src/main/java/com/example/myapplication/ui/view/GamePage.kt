@@ -2,16 +2,17 @@ package com.example.myapplication.ui.view
 import android.app.Activity
 import android.os.Bundle
 import android.view.View
+import android.view.View.OnClickListener
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.myapplication.R
 import com.example.myapplication.databinding.GamePageBinding
-import com.example.myapplication.databinding.TicTacToeBinding
 import java.util.Arrays
 
 
-class GamePage:Activity() {
+class GamePage: AppCompatActivity() {
     private lateinit var binding: GamePageBinding
     var gameActive = true
 
@@ -40,19 +41,67 @@ class GamePage:Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.game_page)
+        gameReset()
+        StartButton()
+        handleOnClickListener()
+        hideActionBar()
     }
 
+    private fun hideActionBar() {
+        supportActionBar?.hide()
+    }
+
+    private fun handleOnClickListener() {
+        binding.backButton.setOnClickListener {
+            finish()
+        }
+    }
+
+    private fun DisbleClick(){
+        binding.imageView0.isClickable  =  false
+        binding.imageView1.isClickable  =  false
+        binding.imageView2.isClickable  =  false
+        binding.imageView3.isClickable  =  false
+        binding.imageView4.isClickable  =  false
+        binding.imageView5.isClickable  =  false
+        binding.imageView6.isClickable  =  false
+        binding.imageView7.isClickable  =  false
+        binding.imageView8.isClickable  =  false
+    }
+    private fun EnableClick(){
+        binding.imageView0.isClickable  =  true
+        binding.imageView1.isClickable  =  true
+        binding.imageView2.isClickable  =  true
+        binding.imageView3.isClickable  =  true
+        binding.imageView4.isClickable  =  true
+        binding.imageView5.isClickable  =  true
+        binding.imageView6.isClickable  =  true
+        binding.imageView7.isClickable  =  true
+        binding.imageView8.isClickable  =  true
+    }
+    private fun StartButton(){
+        binding.startButton.setOnClickListener {
+            EnableClick()
+            gameReset()
+        }
+    }
+
+    private fun EnableTheClick() {
+        binding.imageView0.setOnClickListener{
+            binding.imageView0.isClickable = true
+        }
+        gameReset()
+    }
+
+
+
     fun playerTap(view: View) {
+        binding.startButton.text = "Reset Game"
         val img = view as ImageView
         val tappedImage = img.tag.toString().toInt()
 
         // game reset function will be called
         // if someone wins or the boxes are full
-        if (!gameActive) {
-            gameReset(view)
-            //Reset the counter
-            counter = 0
-        }
 
         // if the tapped image is empty
         if (gameState[tappedImage] === 2) {
@@ -103,60 +152,69 @@ class GamePage:Activity() {
                     flag = 1
 
                     // Somebody has won! - Find out who!
+                    drawLine(winPosition)
 
                     // game reset function be called
                     gameActive = false
-                    var winnerStr: String = if (gameState[winPosition[0]] === 0) {
+                    val winnerStr: String = if (gameState[winPosition[0]] === 0) {
+                        DisbleClick()
+                        binding.startButton.text = "Reset Game"
                         "X has won"
                     } else {
+                        DisbleClick()
+                        binding.startButton.text = "Reset Game"
                         "O has won"
                     }
                     // Update the status bar for winner announcement
-                    val status = findViewById<TextView>(com.example.myapplication.R.id.status)
-                    status.text = winnerStr
+                    binding.status.text = winnerStr
                 }
             }
             // set the status if the match draw
             if (counter == 9 && flag == 0) {
-                val status = findViewById<TextView>(com.example.myapplication.R.id.status)
-                status.text = "Match Draw"
+                DisbleClick()
+                binding.startButton.text = "Reset Game"
+                binding.status.text = "Match Draw"
             }
         }
     }
 
-    private fun gameReset(view: View?) {
+    private fun drawLine(WinPosition:IntArray) {
+//        intArrayOf(0, 1, 2),
+//        intArrayOf(3, 4, 5),
+//        intArrayOf(6, 7, 8),
+//        intArrayOf(0, 3, 6),
+//        intArrayOf(1, 4, 7),
+//        intArrayOf(2, 5, 8),
+//        intArrayOf(0, 4, 8),
+//        intArrayOf(2, 4, 6)
+        if(WinPosition[0]==0 && WinPosition[1]==1 && WinPosition[2]==2){
+            (findViewById<View>(R.id.row1) as ImageView).apply {
+                setImageResource(R.drawable.horizontal)
+            }
+        }else if(WinPosition[0]==3 && WinPosition[1]==4 && WinPosition[2]==5){
+            (findViewById<View>(R.id.row1) as ImageView).apply {
+                setImageResource(R.drawable.horizontal)
+            }
+        }
+    }
+
+    private fun gameReset() {
+        binding.startButton.text = "Click On Grid To play"
         gameActive = true
         activePlayer = 0
+        counter = 0
         //set all position to Null
         Arrays.fill(gameState, 2)
         // remove all the images from the boxes inside the grid
-        (findViewById<View>(com.example.myapplication.R.id.imageView0) as ImageView).setImageResource(
-            0
-        )
-        (findViewById<View>(com.example.myapplication.R.id.imageView1) as ImageView).setImageResource(
-            0
-        )
-        (findViewById<View>(com.example.myapplication.R.id.imageView2) as ImageView).setImageResource(
-            0
-        )
-        (findViewById<View>(com.example.myapplication.R.id.imageView3) as ImageView).setImageResource(
-            0
-        )
-        (findViewById<View>(com.example.myapplication.R.id.imageView4) as ImageView).setImageResource(
-            0
-        )
-        (findViewById<View>(com.example.myapplication.R.id.imageView5) as ImageView).setImageResource(
-            0
-        )
-        (findViewById<View>(com.example.myapplication.R.id.imageView6) as ImageView).setImageResource(
-            0
-        )
-        (findViewById<View>(com.example.myapplication.R.id.imageView7) as ImageView).setImageResource(
-            0
-        )
-        (findViewById<View>(com.example.myapplication.R.id.imageView8) as ImageView).setImageResource(
-            0
-        )
+        (findViewById<View>(R.id.imageView0) as ImageView).setImageResource(0)
+        (findViewById<View>(R.id.imageView1) as ImageView).setImageResource(0)
+        (findViewById<View>(R.id.imageView2) as ImageView).setImageResource(0)
+        (findViewById<View>(R.id.imageView3) as ImageView).setImageResource(0)
+        (findViewById<View>(R.id.imageView4) as ImageView).setImageResource(0)
+        (findViewById<View>(R.id.imageView5) as ImageView).setImageResource(0)
+        (findViewById<View>(R.id.imageView6) as ImageView).setImageResource(0)
+        (findViewById<View>(R.id.imageView7) as ImageView).setImageResource(0)
+        (findViewById<View>(R.id.imageView8) as ImageView).setImageResource(0)
         val status = findViewById<TextView>(com.example.myapplication.R.id.status)
         status.text = "X's Turn - Tap to play"
     }

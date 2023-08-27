@@ -3,6 +3,7 @@ package com.example.myapplication.ui.view
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View.OnClickListener
 import androidx.databinding.DataBindingUtil
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
@@ -14,6 +15,8 @@ class MainActivity : Activity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         splashScreenTime()
     }
+
+
 
     private fun splashScreenTime() {
         val timer1: Thread = object : Thread() {
