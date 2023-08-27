@@ -126,17 +126,16 @@ class GamePage: AppCompatActivity() {
             // from 0 to 1 or 1 to 0
             if (activePlayer == 0) {
                 // set the image of x
-                img.setImageResource(com.example.myapplication.R.drawable.x)
+                img.setImageResource(R.drawable.x)
                 activePlayer = 1
-                val status = findViewById<TextView>(com.example.myapplication.R.id.status)
 
                 // change the status
-                status.text = "O's Turn - Tap to play"
+                binding.status.text = "O's Turn - Tap to play"
             } else {
                 // set the image of o
-                img.setImageResource(com.example.myapplication.R.drawable.o)
+                img.setImageResource(R.drawable.o)
                 activePlayer = 0
-                val status = findViewById<TextView>(com.example.myapplication.R.id.status)
+                val status = findViewById<TextView>(R.id.status)
 
                 // change the status
                 status.text = "X's Turn - Tap to play"
@@ -179,21 +178,37 @@ class GamePage: AppCompatActivity() {
     }
 
     private fun drawLine(WinPosition:IntArray) {
-//        intArrayOf(0, 1, 2),
-//        intArrayOf(3, 4, 5),
-//        intArrayOf(6, 7, 8),
-//        intArrayOf(0, 3, 6),
-//        intArrayOf(1, 4, 7),
-//        intArrayOf(2, 5, 8),
-//        intArrayOf(0, 4, 8),
-//        intArrayOf(2, 4, 6)
         if(WinPosition[0]==0 && WinPosition[1]==1 && WinPosition[2]==2){
             (findViewById<View>(R.id.row1) as ImageView).apply {
                 setImageResource(R.drawable.horizontal)
             }
         }else if(WinPosition[0]==3 && WinPosition[1]==4 && WinPosition[2]==5){
-            (findViewById<View>(R.id.row1) as ImageView).apply {
+            (findViewById<View>(R.id.row2) as ImageView).apply {
                 setImageResource(R.drawable.horizontal)
+            }
+        }else if(WinPosition[0]==6 && WinPosition[1]==7 && WinPosition[2]==8){
+            (findViewById<View>(R.id.row3) as ImageView).apply {
+                setImageResource(R.drawable.horizontal)
+            }
+        } else if(WinPosition[0]==0 && WinPosition[1]==3 && WinPosition[2]==6){
+            (findViewById<View>(R.id.col1) as ImageView).apply {
+                setImageResource(R.drawable.veritcal)
+            }
+        }else if(WinPosition[0]==1 && WinPosition[1]==4 && WinPosition[2]==7){
+            (findViewById<View>(R.id.row2) as ImageView).apply {
+                setImageResource(R.drawable.veritcal)
+            }
+        }else if(WinPosition[0]==2 && WinPosition[1]==5 && WinPosition[2]==8){
+            (findViewById<View>(R.id.col3) as ImageView).apply {
+                setImageResource(R.drawable.veritcal)
+            }
+        }else if(WinPosition[0]==0 && WinPosition[1]==4 && WinPosition[2]==8){
+            (findViewById<View>(R.id.row2) as ImageView).apply {
+                setImageResource(R.drawable.maindiagonal)
+            }
+        }else if(WinPosition[0]==2 && WinPosition[1]==4 && WinPosition[2]==6){
+            (findViewById<View>(R.id.row2) as ImageView).apply {
+                setImageResource(R.drawable.offdiagonal)
             }
         }
     }
@@ -215,6 +230,11 @@ class GamePage: AppCompatActivity() {
         (findViewById<View>(R.id.imageView6) as ImageView).setImageResource(0)
         (findViewById<View>(R.id.imageView7) as ImageView).setImageResource(0)
         (findViewById<View>(R.id.imageView8) as ImageView).setImageResource(0)
+        binding.row1.setImageResource(0)
+        binding.row2.setImageResource(0)
+        binding.row3.setImageResource(0)
+        binding.col1.setImageResource(0)
+        binding.col3.setImageResource(0)
         val status = findViewById<TextView>(com.example.myapplication.R.id.status)
         status.text = "X's Turn - Tap to play"
     }
