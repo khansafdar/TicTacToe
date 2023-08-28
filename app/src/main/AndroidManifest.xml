@@ -30,6 +30,9 @@
         <activity android:name=".ui.view.AboutUs"
             android:exported="true"
             android:label="LearnToPlay"/>
+        <activity android:name=".ui.view.Bot"
+            android:exported="true"
+            android:label="Play With Bot"/>
     </application>
 
 </manifest>

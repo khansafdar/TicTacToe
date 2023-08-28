@@ -31,5 +31,9 @@ class TicTacToe :AppCompatActivity(){
         binding.ticTacToeAboutUs.setOnClickListener {
             startActivity(Intent(this@TicTacToe,AboutUs::class.java))
         }
+        binding.ticTacTaeBotButton.setOnClickListener {
+            startActivity(Intent(this@TicTacToe, Bot::class.java))
+        }
+
     }
 }

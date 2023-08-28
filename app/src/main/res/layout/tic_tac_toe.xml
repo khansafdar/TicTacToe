@@ -31,13 +31,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
         <Button
+            android:id="@+id/tic_tac_tae_bot_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="play With Bot"
+            android:textSize="22sp"
+            app:layout_constraintTop_toBottomOf="@id/tic_tac_tae_play_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <Button
             android:id="@+id/tic_tac_toe_instruction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Learn To Play"
             android:textSize="22sp"
-            app:layout_constraintTop_toBottomOf="@id/tic_tac_tae_play_button"
+            app:layout_constraintTop_toBottomOf="@id/tic_tac_tae_bot_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
         <Button
