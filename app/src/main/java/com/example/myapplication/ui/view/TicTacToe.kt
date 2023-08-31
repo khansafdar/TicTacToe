@@ -34,6 +34,9 @@ class TicTacToe :AppCompatActivity(){
         binding.ticTacTaeBotButton.setOnClickListener {
             startActivity(Intent(this@TicTacToe, Bot::class.java))
         }
+        binding.ticTacTaeOnlineButton.setOnClickListener {
+            startActivity(Intent(this@TicTacToe, OnlineCodeGenerator::class.java))
+        }
 
     }
 }

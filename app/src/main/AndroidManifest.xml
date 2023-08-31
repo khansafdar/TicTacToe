@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/tic_tac_toe_image"
@@ -31,6 +32,12 @@
             android:exported="true"
             android:label="LearnToPlay"/>
         <activity android:name=".ui.view.Bot"
+            android:exported="true"
+            android:label="Play With Bot"/>
+        <activity android:name=".ui.view.OnlineCodeGenerator"
+            android:exported="true"
+            android:label="Play With Bot"/>
+        <activity android:name=".ui.view.OnlineGamepage"
             android:exported="true"
             android:label="Play With Bot"/>
     </application>
