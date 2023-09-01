@@ -51,7 +51,12 @@ class OnlineGamepage:AppCompatActivity() {
         handleOnClickListener()
         hideActionBar()
         gameReset()
-        FirebaseDatabase.getInstance().reference.child("data").addChildEventListener(object:
+        if(isCodeMaker){
+            activePlayer=0
+        }else{
+            activePlayer=1
+        }
+        FirebaseDatabase.getInstance().reference.child("data").child(code).addChildEventListener(object:
                 ChildEventListener{
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 var data = snapshot.value
@@ -152,83 +157,89 @@ class OnlineGamepage:AppCompatActivity() {
 
 
     fun playerTap(view: View) {
-        binding.startButton.text = "Reset Game"
-        val img = view as ImageView
-        val tappedImage = img.tag.toString().toInt()
+        if(isMyMove.value==true) {
+            binding.startButton.text = "Reset Game"
+            val img = view as ImageView
+            val tappedImage = img.tag.toString().toInt()
 
-        // game reset function will be called
-        // if someone wins or the boxes are full
+            // game reset function will be called
+            // if someone wins or the boxes are full
 
-        // if the tapped image is empty
-        if (gameState[tappedImage] === 2) {
-            // increase the counter
-            // after every tap
-            counter++
+            // if the tapped image is empty
+            if (gameState[tappedImage] === 2) {
+                // increase the counter
+                // after every tap
+                counter++
 
-            // check if its the last box
-            if (counter == 9) {
-                // reset the game
-                gameActive = false
-            }
-
-            // mark this position
-            gameState[tappedImage] = activePlayer
-
-            // this will give a motion
-            // effect to the image
-            img.translationY = -1000f
-
-            // change the active player
-            // from 0 to 1 or 1 to 0
-            if (activePlayer == 0) {
-                // set the image of x
-                img.setImageResource(R.drawable.x)
-                activePlayer = 1
-
-                // change the status
-            } else {
-                // set the image of o
-                img.setImageResource(R.drawable.o)
-                activePlayer = 0
-                val status = findViewById<TextView>(R.id.status)
-
-                // change the status
-            }
-            img.animate().translationYBy(1000f).duration = 300
-        }
-        var flag = 0
-        // Check if any player has won if counter is > 4 as min 5 taps are
-        // required to declare a winner
-        if (counter > 4) {
-            for (winPosition in winPositions) {
-                if (gameState[winPosition[0]] == gameState[winPosition[1]] && gameState[winPosition[1]] == gameState[winPosition[2]] && gameState[winPosition[0]] != 2) {
-                    flag = 1
-
-                    // Somebody has won! - Find out who!
-                    drawLine(winPosition)
-
-                    // game reset function be called
+                // check if its the last box
+                if (counter == 9) {
+                    // reset the game
                     gameActive = false
-                    val winnerStr: String = if (gameState[winPosition[0]] === 0) {
-                        DisbleClick()
-                        binding.startButton.text = "Reset Game"
-                        "X has won"
-                    } else {
-                        DisbleClick()
-                        binding.startButton.text = "Reset Game"
-                        "O has won"
+                }
+
+                // mark this position
+                gameState[tappedImage] = activePlayer
+
+                // this will give a motion
+                // effect to the image
+                img.translationY = -1000f
+
+                // change the active player
+                // from 0 to 1 or 1 to 0
+                if (activePlayer == 0) {
+                    // set the image of x
+                    img.setImageResource(R.drawable.x)
+                    activePlayer = 1
+
+                    // change the status
+                } else {
+                    // set the image of o
+                    img.setImageResource(R.drawable.o)
+                    activePlayer = 0
+                    val status = findViewById<TextView>(R.id.status)
+
+                    // change the status
+                }
+                img.animate().translationYBy(1000f).duration = 300
+                updateDatabase(tappedImage)
+            }
+            var flag = 0
+            // Check if any player has won if counter is > 4 as min 5 taps are
+            // required to declare a winner
+            if (counter > 4) {
+                for (winPosition in winPositions) {
+                    if (gameState[winPosition[0]] == gameState[winPosition[1]] && gameState[winPosition[1]] == gameState[winPosition[2]] && gameState[winPosition[0]] != 2) {
+                        flag = 1
+
+                        // Somebody has won! - Find out who!
+                        drawLine(winPosition)
+
+                        // game reset function be called
+                        gameActive = false
+                        val winnerStr: String = if (gameState[winPosition[0]] === 0) {
+                            DisbleClick()
+                            binding.startButton.text = "Reset Game"
+                            "You has won"
+                        } else {
+                            DisbleClick()
+                            binding.startButton.text = "Reset Game"
+                            "Other has won"
+                        }
+                        // Update the status bar for winner announcement
+                        binding.status.text = winnerStr
                     }
-                    // Update the status bar for winner announcement
-                    binding.status.text = winnerStr
+                }
+                // set the status if the match draw
+                if (counter == 9 && flag == 0) {
+                    DisbleClick()
+                    binding.startButton.text = "Reset Game"
+                    binding.status.text = "Match Draw"
                 }
             }
-            // set the status if the match draw
-            if (counter == 9 && flag == 0) {
-                DisbleClick()
-                binding.startButton.text = "Reset Game"
-                binding.status.text = "Match Draw"
-            }
         }
+    }
+    private fun updateDatabase(cellId:Int){
+        FirebaseDatabase.getInstance().reference.child("data").child(code).push().setValue(cellId);
     }
 
     private fun drawLine(WinPosition:IntArray) {
@@ -289,7 +300,5 @@ class OnlineGamepage:AppCompatActivity() {
         binding.row3.setImageResource(0)
         binding.col1.setImageResource(0)
         binding.col3.setImageResource(0)
-        val status = findViewById<TextView>(com.example.myapplication.R.id.status)
-//        status.text = "X's Turn - Tap to play"
     }
 }

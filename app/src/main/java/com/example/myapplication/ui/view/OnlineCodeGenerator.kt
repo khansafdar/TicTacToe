@@ -37,6 +37,7 @@ class OnlineCodeGenerator : AppCompatActivity() {
             code = binding.idEtInputCode.text.toString()
             if (code != "null" && code != "") {
                 isCodeMaker = true
+                invisiblePage()
                 binding.idBtnProgressBar.visibility = View.VISIBLE
                 FirebaseDatabase.getInstance().reference.child("codes").addValueEventListener(object : ValueEventListener {
                     override fun onCancelled(error: DatabaseError) {
@@ -71,7 +72,7 @@ class OnlineCodeGenerator : AppCompatActivity() {
             checkTemp = true
             keyValue = "null"
             code = binding.idEtInputCode.text.toString()
-            if (code != "null" && code != null && code != "") {
+            if (code != "null" && code != "") {
                 isCodeMaker = false
                 FirebaseDatabase.getInstance().reference.child("codes").addValueEventListener(object : ValueEventListener {
                     override fun onCancelled(error: DatabaseError) {
@@ -98,6 +99,16 @@ class OnlineCodeGenerator : AppCompatActivity() {
 
     private fun accepted() {
         startActivity(Intent(this@OnlineCodeGenerator, OnlineGamepage::class.java))
+    }
+    private fun invisiblePage(){
+        binding.idEtInputCode.visibility = View.INVISIBLE
+        binding.idBtnCodeGenerate.visibility = View.INVISIBLE
+        binding.idBtnJoinGame.visibility = View.INVISIBLE
+    }
+    private fun visiblePage(){
+        binding.idEtInputCode.visibility = View.VISIBLE
+        binding.idBtnCodeGenerate.visibility = View.VISIBLE
+        binding.idBtnJoinGame.visibility = View.VISIBLE
     }
 
     private fun isValueAvailable(snapshot: DataSnapshot, code: String): Boolean {
