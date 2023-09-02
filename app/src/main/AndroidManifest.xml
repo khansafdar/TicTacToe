@@ -40,6 +40,12 @@
         <activity android:name=".ui.view.OnlineGamepage"
             android:exported="true"
             android:label="Play With Bot"/>
+        <activity android:name=".ui.view.TicTacToeOfflineMode"
+            android:exported="true"
+            android:label="Play With Bot"/>
+        <activity android:name=".ui.view.TicTacToeOnlineMode"
+            android:exported="true"
+            android:label="Play With Bot"/>
     </application>
 
 </manifest>
