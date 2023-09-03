@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.utils
+package com.safdar.myapplication.ui.utils
 
 import java.util.Random
 

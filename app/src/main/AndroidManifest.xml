@@ -12,38 +12,38 @@
         android:theme="@style/Theme.AppCompat.Light"
         android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".ui.view.MainActivity"
+        <activity android:name="com.safdar.myapplication.ui.view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.view.TicTacToe"
+        <activity android:name="com.safdar.myapplication.ui.view.TicTacToe"
             android:exported="true"
             android:label="Start The Game"/>
-        <activity android:name=".ui.view.GamePage"
+        <activity android:name="com.safdar.myapplication.ui.view.GamePage"
             android:exported="true"
             android:label="Game_page"/>
-        <activity android:name=".ui.view.LearningTicTacToe"
+        <activity android:name="com.safdar.myapplication.ui.view.LearningTicTacToe"
             android:exported="true"
             android:label="LearnToPlay"/>
-        <activity android:name=".ui.view.AboutUs"
+        <activity android:name="com.safdar.myapplication.ui.view.AboutUs"
             android:exported="true"
             android:label="LearnToPlay"/>
-        <activity android:name=".ui.view.Bot"
+        <activity android:name="com.safdar.myapplication.ui.view.Bot"
             android:exported="true"
             android:label="Play With Bot"/>
-        <activity android:name=".ui.view.OnlineCodeGenerator"
+        <activity android:name="com.safdar.myapplication.ui.view.OnlineCodeGenerator"
             android:exported="true"
             android:label="Play With Bot"/>
-        <activity android:name=".ui.view.OnlineGamepage"
+        <activity android:name="com.safdar.myapplication.ui.view.OnlineGamepage"
             android:exported="true"
             android:label="Play With Bot"/>
-        <activity android:name=".ui.view.TicTacToeOfflineMode"
+        <activity android:name="com.safdar.myapplication.ui.view.TicTacToeOfflineMode"
             android:exported="true"
             android:label="Play With Bot"/>
-        <activity android:name=".ui.view.TicTacToeOnlineMode"
+        <activity android:name="com.safdar.myapplication.ui.view.TicTacToeOnlineMode"
             android:exported="true"
             android:label="Play With Bot"/>
     </application>

@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.view
+package com.safdar.myapplication.ui.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -38,7 +38,7 @@ class OnlineCodeGenerator : AppCompatActivity() {
             if (code != "null" && code != "") {
                 isCodeMaker = true
                 invisiblePage()
-                binding.idBtnProgressBar.visibility = View.VISIBLE
+                enableProgressbar()
                 FirebaseDatabase.getInstance().reference.child("codes").addValueEventListener(object : ValueEventListener {
                     override fun onCancelled(error: DatabaseError) {
                         TODO("Not yet implemented")
@@ -49,8 +49,12 @@ class OnlineCodeGenerator : AppCompatActivity() {
                         Handler().postDelayed({
                             if (check) {
                                 Toast.makeText(this@OnlineCodeGenerator, "Please enter Different Code To Join", Toast.LENGTH_SHORT).show()
+                                visiblePage()
+                                disableProgressbar()
                             } else {
-                                FirebaseDatabase.getInstance().reference.child("codes").push().setValue(code)
+                                FirebaseDatabase.getInstance().reference.child("codes").push().setValue(
+                                    code
+                                )
                                 isValueAvailable(snapshot, code)
                                 checkTemp = false
                                 Handler().postDelayed({
@@ -58,11 +62,13 @@ class OnlineCodeGenerator : AppCompatActivity() {
                                     Toast.makeText(this@OnlineCodeGenerator, "Please Don,t Go back", Toast.LENGTH_SHORT).show()
                                 }, 300)
                             }
-                        }, 2000)
+                        }, 1000)
                     }
                 })
             } else {
                 Toast.makeText(this@OnlineCodeGenerator, "Please enter the Correct Code To Join", Toast.LENGTH_SHORT).show()
+                disableProgressbar()
+                visiblePage()
             }
 
         }
@@ -73,6 +79,8 @@ class OnlineCodeGenerator : AppCompatActivity() {
             keyValue = "null"
             code = binding.idEtInputCode.text.toString()
             if (code != "null" && code != "") {
+                invisiblePage()
+                enableProgressbar()
                 isCodeMaker = false
                 FirebaseDatabase.getInstance().reference.child("codes").addValueEventListener(object : ValueEventListener {
                     override fun onCancelled(error: DatabaseError) {
@@ -87,12 +95,16 @@ class OnlineCodeGenerator : AppCompatActivity() {
                                 accepted()
                             } else {
                                 Toast.makeText(this@OnlineCodeGenerator, "Please enter the Correct Code To Join", Toast.LENGTH_SHORT).show()
+                                visiblePage()
+                                disableProgressbar()
                             }
-                        }, 2000)
+                        }, 1000)
                     }
                 })
             } else {
                 Toast.makeText(this@OnlineCodeGenerator, "Please enter the Correct Code To Join", Toast.LENGTH_SHORT).show()
+                visiblePage()
+                disableProgressbar()
             }
         }
     }
@@ -109,6 +121,12 @@ class OnlineCodeGenerator : AppCompatActivity() {
         binding.idEtInputCode.visibility = View.VISIBLE
         binding.idBtnCodeGenerate.visibility = View.VISIBLE
         binding.idBtnJoinGame.visibility = View.VISIBLE
+    }
+    private fun enableProgressbar(){
+        binding.idBtnProgressBar.visibility = View.VISIBLE
+    }
+    private fun disableProgressbar(){
+        binding.idBtnProgressBar.visibility = View.INVISIBLE
     }
 
     private fun isValueAvailable(snapshot: DataSnapshot, code: String): Boolean {

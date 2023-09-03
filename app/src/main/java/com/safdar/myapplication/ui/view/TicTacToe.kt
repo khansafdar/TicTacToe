@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.view
+package com.safdar.myapplication.ui.view
 
 import android.app.Activity
 import android.content.Intent
@@ -28,7 +28,12 @@ class TicTacToe :AppCompatActivity(){
         binding.ticTacTaeOnlineButton.setOnClickListener {
             startActivity(Intent(this@TicTacToe, TicTacToeOnlineMode::class.java))
         }
-
+        binding.ticTacTaeLearnButton.setOnClickListener {
+            startActivity(Intent(this@TicTacToe, LearningTicTacToe::class.java))
+        }
+        binding.ticTacTaeAboutButton.setOnClickListener {
+            startActivity(Intent(this@TicTacToe, AboutUs::class.java))
+        }
 
     }
 }

@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:paddingVertical="20dp"
+        android:background="@drawable/tic_tac_toe_background">
         <EditText
             android:id="@+id/idEtInputCode"
             android:layout_width="match_parent"
@@ -17,24 +18,24 @@
             android:layout_marginTop="50dp"/>
         <Button
             android:id="@+id/idBtnCodeGenerate"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/idEtInputCode"
-            android:text="Generate Code"
+            android:text="Enter Any Code To Generate"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
         <Button
             android:id="@+id/idBtnJoinGame"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/idBtnCodeGenerate"
-            android:text="Join Game"
+            android:text="Enter the code to Join"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
         <ProgressBar
             android:id="@+id/idBtnProgressBar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

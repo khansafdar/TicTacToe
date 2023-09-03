@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.view
+package com.safdar.myapplication.ui.view
 
 import android.content.Intent
 import android.os.Bundle

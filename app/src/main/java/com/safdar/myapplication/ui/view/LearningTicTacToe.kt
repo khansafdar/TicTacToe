@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.view
+package com.safdar.myapplication.ui.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
