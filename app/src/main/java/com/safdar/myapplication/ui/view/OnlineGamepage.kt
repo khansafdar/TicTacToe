@@ -3,12 +3,11 @@ package com.safdar.myapplication.ui.view
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.MutableLiveData
-import com.example.myapplication.R
-import com.example.myapplication.databinding.OnlineGamePageBinding
+import com.safdar.myapplication.R
+import com.safdar.myapplication.databinding.OnlineGamePageBinding
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

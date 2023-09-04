@@ -7,8 +7,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.example.myapplication.R
-import com.example.myapplication.databinding.OnlineCodeGeneratorBinding
+import com.safdar.myapplication.R
+import com.safdar.myapplication.databinding.OnlineCodeGeneratorBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase

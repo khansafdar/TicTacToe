@@ -3,8 +3,8 @@ package com.safdar.myapplication.ui.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.example.myapplication.R
-import com.example.myapplication.databinding.LearningTicTacToeBinding
+import com.safdar.myapplication.R
+import com.safdar.myapplication.databinding.LearningTicTacToeBinding
 
 class LearningTicTacToe :AppCompatActivity(){
     private lateinit var binding:LearningTicTacToeBinding

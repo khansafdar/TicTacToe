@@ -8,9 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.example.myapplication.R
-import com.example.myapplication.databinding.BotActivityBinding
-import com.example.myapplication.databinding.GamePageBinding
+import com.safdar.myapplication.R
+import com.safdar.myapplication.databinding.BotActivityBinding
 import java.util.Arrays
 import java.util.Random
 
@@ -272,7 +271,7 @@ class Bot : AppCompatActivity() {
         binding.row3.setImageResource(0)
         binding.col1.setImageResource(0)
         binding.col3.setImageResource(0)
-        val status = findViewById<TextView>(com.example.myapplication.R.id.status)
+        val status = findViewById<TextView>(R.id.status)
         status.text = "X's Turn - Tap to play"
     }
 }

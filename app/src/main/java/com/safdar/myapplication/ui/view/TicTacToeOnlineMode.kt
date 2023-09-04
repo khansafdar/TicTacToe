@@ -4,9 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.example.myapplication.R
-import com.example.myapplication.databinding.TicTacToeBinding
-import com.example.myapplication.databinding.TicTacToeOnlineModeBinding
+import com.safdar.myapplication.R
+import com.safdar.myapplication.databinding.TicTacToeOnlineModeBinding
 
 class TicTacToeOnlineMode:AppCompatActivity() {
     lateinit var binding: TicTacToeOnlineModeBinding

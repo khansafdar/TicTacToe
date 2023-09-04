@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "155885173048",
+    "firebase_url": "https://tic-tac-toe-game-e2f0e-default-rtdb.firebaseio.com",
     "project_id": "tic-tac-toe-game-e2f0e",
     "storage_bucket": "tic-tac-toe-game-e2f0e.appspot.com"
   },
@@ -39,6 +40,64 @@
         "mobilesdk_app_id": "1:155885173048:android:e6fc4c5d8e3c42aa4f29cd",
         "android_client_info": {
           "package_name": "com.example.myapplication.ui.view"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "155885173048-69ocm2eoi4mr3dsro3sr2r9532p4khoj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdob-SxsRhIc_RY2rZ59-lY5MYzjYUElw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "155885173048-69ocm2eoi4mr3dsro3sr2r9532p4khoj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155885173048:android:f59b9a03f4ccb7ea4f29cd",
+        "android_client_info": {
+          "package_name": "com.safdar.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "155885173048-69ocm2eoi4mr3dsro3sr2r9532p4khoj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdob-SxsRhIc_RY2rZ59-lY5MYzjYUElw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "155885173048-69ocm2eoi4mr3dsro3sr2r9532p4khoj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155885173048:android:01af264341d34a8d4f29cd",
+        "android_client_info": {
+          "package_name": "com.safdar.myapplication.ui.view"
         }
       },
       "oauth_client": [

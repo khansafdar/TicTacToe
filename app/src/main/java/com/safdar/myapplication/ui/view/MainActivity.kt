@@ -3,10 +3,9 @@ package com.safdar.myapplication.ui.view
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.View.OnClickListener
 import androidx.databinding.DataBindingUtil
-import com.example.myapplication.R
-import com.example.myapplication.databinding.ActivityMainBinding
+import com.safdar.myapplication.R
+import com.safdar.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : Activity() {
     private lateinit var binding: ActivityMainBinding
