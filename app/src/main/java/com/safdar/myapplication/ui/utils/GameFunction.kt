@@ -1,9 +1,9 @@
 package com.safdar.myapplication.ui.utils
 
+import androidx.appcompat.app.AppCompatActivity
 import java.util.Random
 
-class GameFunction {
-
+class GameFunction:AppCompatActivity() {
     fun chooseRandomMove(board: ArrayList<String>, moves: ArrayList<Int>): Int {
         val possibleMoves = arrayListOf<Int>()
 
@@ -18,4 +18,14 @@ class GameFunction {
             possibleMoves[index]
         }
     }
+
+    companion object {
+        fun getRandomString(length: Int): String {
+            val allowedChars = ('A'..'Z') + ('a'..'z') + ('0'..'9')
+            return (1..length)
+                .map { allowedChars.random() }
+                .joinToString("")
+        }
+    }
+
 }

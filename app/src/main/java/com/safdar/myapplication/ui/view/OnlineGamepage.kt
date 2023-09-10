@@ -41,6 +41,7 @@ class OnlineGamepage : AppCompatActivity() {
         handleOnClickListener()
         hideActionBar()
         gameReset()
+        showCode()
         FirebaseDatabase.getInstance().reference.child("data").child(code)
             .addChildEventListener(object :
                 ChildEventListener {
@@ -72,6 +73,12 @@ class OnlineGamepage : AppCompatActivity() {
                 }
 
             })
+    }
+
+    private fun showCode() {
+        if(isCodeMaker){
+            binding.idGeneratedCode.text = code
+        }
     }
 
     private fun addView() {

@@ -17,18 +17,10 @@
             android:gravity="center"
             android:layout_marginTop="50dp"/>
         <Button
-            android:id="@+id/idBtnCodeGenerate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/idEtInputCode"
-            android:text="Enter Any Code To Generate"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-        <Button
             android:id="@+id/idBtnJoinGame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/idBtnCodeGenerate"
+            app:layout_constraintTop_toBottomOf="@+id/idEtInputCode"
             android:text="Enter the code to Join"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
