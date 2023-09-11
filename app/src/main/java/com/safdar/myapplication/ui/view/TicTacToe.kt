@@ -4,13 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.google.firebase.auth.FirebaseAuth
 import com.safdar.myapplication.R
 import com.safdar.myapplication.databinding.TicTacToeBinding
 
 class TicTacToe :AppCompatActivity(){
     lateinit var binding:TicTacToeBinding
+    private lateinit var mAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mAuth = FirebaseAuth.getInstance()
         binding = DataBindingUtil.setContentView(this, R.layout.tic_tac_toe)
         initClickListener()
         hideActionBar()
@@ -32,6 +35,10 @@ class TicTacToe :AppCompatActivity(){
         }
         binding.ticTacTaeAboutButton.setOnClickListener {
             startActivity(Intent(this@TicTacToe, AboutUs::class.java))
+        }
+        binding.logout.setOnClickListener {
+            mAuth.signOut()
+            startActivity(Intent(this@TicTacToe,LoginPage::class.java))
         }
 
     }

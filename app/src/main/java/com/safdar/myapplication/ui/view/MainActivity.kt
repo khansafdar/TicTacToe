@@ -25,7 +25,7 @@ class MainActivity : Activity() {
                 } catch (e: InterruptedException) {
                     e.printStackTrace()
                 } finally {
-                    val intent = Intent(this@MainActivity, TicTacToe::class.java)
+                    val intent = Intent(this@MainActivity, LoginPage::class.java)
                     startActivity(intent)
                     finish()
                 }

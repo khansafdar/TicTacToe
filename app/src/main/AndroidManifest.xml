@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/tic_tac_toe_image"
@@ -21,31 +22,34 @@
         </activity>
         <activity android:name="com.safdar.myapplication.ui.view.TicTacToe"
             android:exported="true"
-            android:label="Start The Game"/>
+            android:label="Tic Tac Toe page"/>
         <activity android:name="com.safdar.myapplication.ui.view.GamePage"
             android:exported="true"
-            android:label="Game_page"/>
+            android:label="Offline Game Page"/>
         <activity android:name="com.safdar.myapplication.ui.view.LearningTicTacToe"
             android:exported="true"
             android:label="LearnToPlay"/>
         <activity android:name="com.safdar.myapplication.ui.view.AboutUs"
             android:exported="true"
-            android:label="LearnToPlay"/>
+            android:label="About Us Page"/>
         <activity android:name="com.safdar.myapplication.ui.view.Bot"
             android:exported="true"
             android:label="Play With Bot"/>
         <activity android:name="com.safdar.myapplication.ui.view.OnlineCodeGenerator"
             android:exported="true"
-            android:label="Play With Bot"/>
+            android:label="Code Generator Page"/>
         <activity android:name="com.safdar.myapplication.ui.view.OnlineGamepage"
             android:exported="true"
-            android:label="Play With Bot"/>
+            android:label="Online Game Page"/>
         <activity android:name="com.safdar.myapplication.ui.view.TicTacToeOfflineMode"
             android:exported="true"
-            android:label="Play With Bot"/>
+            android:label="Play Offline Mode"/>
         <activity android:name="com.safdar.myapplication.ui.view.TicTacToeOnlineMode"
             android:exported="true"
-            android:label="Play With Bot"/>
+            android:label="Play Online Mode"/>
+        <activity android:name="com.safdar.myapplication.ui.view.LoginPage"
+            android:exported="true"
+            android:label="Login Page"/>
     </application>
 
 </manifest>
